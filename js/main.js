@@ -3,6 +3,9 @@ const eraseBtn = document.querySelector(".erase-btn");
 const inputElement = document.querySelector(".field__input");
 
 
+function randomColor(){
+    return `rgb(${Math.floor(Math.random()*256)},${Math.floor(Math.random()*256)},${Math.floor(Math.random()*256)})`
+}
 
 function drawing(){
     const columns = document.querySelectorAll(".column");

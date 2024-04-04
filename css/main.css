@@ -174,3 +174,9 @@ body {
   border-radius: 5px;
   color: white;
 }
+
+.field__input {
+  background-color: plum;
+  border: 1px solid black;
+  padding: 5px;
+}

@@ -1,0 +1,28 @@
+.field__container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: grey;
+}
+.field__wrapper{
+    background-color: white;
+    height: 600px;
+    width: 800px;
+    border: 2px solid black;
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.row{
+    display: flex;
+    flex-grow: 1;
+}
+.column{
+    display: flex;
+    flex-shrink: 1;
+    height: 100%;
+    width: 100%;
+    // border: 1px solid black;
+}

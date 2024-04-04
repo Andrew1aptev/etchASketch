@@ -126,9 +126,11 @@ body {
 
 .field__container {
   display: flex;
-  flex-direction: column;
+  justify-content: space-around;
   align-items: center;
   background-color: grey;
+  border-radius: 5px;
+  padding: 30px;
 }
 
 .field__wrapper {
@@ -151,4 +153,18 @@ body {
   flex-shrink: 1;
   height: 100%;
   width: 100%;
+}
+
+.field__buttons-column {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+  align-self: self-start;
+}
+
+.field__btn {
+  padding: 20px;
+  background-color: blueviolet;
+  border-radius: 5px;
+  color: white;
 }

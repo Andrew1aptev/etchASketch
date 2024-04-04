@@ -49,7 +49,7 @@ function paintBlock() {
     columns.forEach(element => {
         element.addEventListener("mousemove", function () {
             if (isDrawing) {
-                element.style.background = randomColor();
+                element.style.background = "black";
             }
         })
     });

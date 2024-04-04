@@ -1,6 +1,4 @@
 const field = document.querySelector(".field__wrapper");
-const defaultColorBtn = document.querySelector(".default-color-btn");
-const randomColorBtn = document.querySelector(".random-color-btn");
 const eraseBtn = document.querySelector(".erase-btn");
 // generate random background color
 function randomColor() {
@@ -35,6 +33,7 @@ createBlocks(16);
 
 function paintBlock() {
     const columns = document.querySelectorAll(".column");
+    const randomColorBtn = document.querySelector(".random-color-btn"); // предположим, что у вас есть кнопка с id="randomColorBtn"
     let isDrawing = false;
     let randomBtnClick = false;
 
@@ -50,22 +49,14 @@ function paintBlock() {
             isDrawing = false;
         }
     });
-    document.addEventListener("click", function(event){
+
+    // Проверка нажата ли кнопка random color
+    randomColorBtn.addEventListener("click", function(event){
         randomBtnClick = !randomBtnClick;
     })
     
     columns.forEach(element => {
-        element.addEventListener("mouseover", function () {
-            if (isDrawing) {
-                if(randomBtnClick){
-                    element.style.background = randomColor();
-                } else {
-                    element.style.background = "black";
-                }
-            }
-        })
-
-        element.addEventListener("mouseout", function () {
+        element.addEventListener("mousemove", function () {
             if (isDrawing) {
                 if(randomBtnClick){
                     element.style.background = randomColor();
@@ -84,5 +75,6 @@ function paintBlock() {
 }
 
 paintBlock();
+
 
 

@@ -1,5 +1,7 @@
 const field = document.querySelector(".field__wrapper");
-
+const defaultColorBtn = document.querySelector(".default-color-btn");
+const randomColorBtn = document.querySelector(".random-color-btn");
+const eraseBtn = document.querySelector(".erase-btn");
 // generate random background color
 function randomColor() {
     function getRandomIntInclusive(min, max) {
@@ -28,7 +30,7 @@ function createBlocks(number) {
         }
     }
 }
-createBlocks(100);
+createBlocks(16);
 
 
 function paintBlock() {
@@ -53,6 +55,12 @@ function paintBlock() {
             }
         })
     });
+
+    columns.forEach(element => {
+        eraseBtn.addEventListener("click", function(){
+            element.style.background = "rgb(255,255,255)";
+        })
+    })
 }
 
 paintBlock();

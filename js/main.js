@@ -33,10 +33,15 @@ createBlocks(100);
 function paintBlock() {
     const columns = document.querySelectorAll(".column");
 
-    columns.forEach(element => {
-        element.addEventListener("mouseenter", function () {
-            element.style.background = randomColor();
-        })
+    document.addEventListener('mousedown', function(event) {
+        if (event.button == 0) { // 0 - это код левой кнопки мыши
+            columns.forEach(element => {
+                element.addEventListener("mouseenter", function () {
+                    element.style.background = randomColor();
+                })
+            });
+        }
     });
+
 }
 paintBlock();

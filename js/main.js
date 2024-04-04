@@ -36,6 +36,9 @@ createBlocks(16);
 function paintBlock() {
     const columns = document.querySelectorAll(".column");
     let isDrawing = false;
+    let randomBtnClick = false;
+
+    // проверка нажата ли левая клавиша мыши
     document.addEventListener('mousedown', function(event) {
         if (event.button == 0) { 
             isDrawing = true;
@@ -47,11 +50,28 @@ function paintBlock() {
             isDrawing = false;
         }
     });
-
+    document.addEventListener("click", function(event){
+        randomBtnClick = !randomBtnClick;
+    })
+    
     columns.forEach(element => {
-        element.addEventListener("mousemove", function () {
+        element.addEventListener("mouseover", function () {
             if (isDrawing) {
-                element.style.background = "black";
+                if(randomBtnClick){
+                    element.style.background = randomColor();
+                } else {
+                    element.style.background = "black";
+                }
+            }
+        })
+
+        element.addEventListener("mouseout", function () {
+            if (isDrawing) {
+                if(randomBtnClick){
+                    element.style.background = randomColor();
+                } else {
+                    element.style.background = "black";
+                }
             }
         })
     });
@@ -64,4 +84,5 @@ function paintBlock() {
 }
 
 paintBlock();
+
 

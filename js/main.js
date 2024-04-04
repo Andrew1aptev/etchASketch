@@ -2,6 +2,8 @@ const field = document.querySelector(".field__wrapper");
 const eraseBtn = document.querySelector(".erase-btn");
 const inputElement = document.querySelector(".field__input");
 
+
+
 function drawing(){
     const columns = document.querySelectorAll(".column");
     columns.forEach(element => {
@@ -11,8 +13,16 @@ function drawing(){
             }
             // отключаем выделение и перетаскивание
             element.style.userSelect = "none";
+
         })
     });
+    // когда нажимаем на кнопку Erase, то проходимся по всем элементам
+    // в columns и меняем каждый на белый цвет
+    eraseBtn.addEventListener("click", ()=>{
+        columns.forEach(element => {
+            element.style.background = "rgb(255,255,255)"
+        })
+    })
 }
 
 // Функция для создания блоков

@@ -2,91 +2,110 @@ const field = document.querySelector(".field__wrapper");
 const eraseBtn = document.querySelector(".erase-btn");
 const inputElement = document.querySelector(".field__input");
 
+// Функция для создания блоков
 function createBlocks(number) {
-    number = number || 2;
-    // перед созданием новых блоков очистите поле
+    // Если число не указано, используем значение по умолчанию 16
+    number = number || 16;
+    // Очищаем поле перед созданием новых блоков
     field.innerHTML = '';
-
-    for (let index = 0; index < number; index++) {
+    // Создаем строки
+    for (let rowIndex = 0; rowIndex < number; rowIndex++) {
         const row = document.createElement("div");
-        row.classList.add("row")
+        row.classList.add("row");
         field.appendChild(row);
-
-        for (let index = 0; index < number; index++) {
+    // В каждой строке создаем столбцы
+        for (let columnIndex = 0; columnIndex < number; columnIndex++) {
             const column = document.createElement("div");
             column.classList.add("column");
             row.appendChild(column);
         }
-        
     }
-    paintBlock();
 }
 
-// добавьте обработчик событий для поля ввода
-inputElement.addEventListener('input', function() {
-    const inputValue = inputElement.value;
-    const numberValue = parseInt(inputValue);
+// Добавляем обработчик событий для поля ввода
+inputElement.addEventListener('change', function() {
+    // Получаем значение из поля ввода
+    let inputValue = inputElement.value;
+    // Преобразуем значение в число
+    let numberValue = parseInt(inputValue);
+
+    // Проверяем, находится ли число в допустимом диапазоне
+    if (numberValue < 2) {
+        numberValue = 2;
+        inputElement.value = numberValue;
+    } else if (numberValue > 100) {
+        numberValue = 100;
+        inputElement.value = numberValue;
+    }
+
+    // Создаем блоки на основе введенного числа
     createBlocks(numberValue);
 });
+// вызываем функцию для того чтобы изначально было 16х16
+createBlocks(16);
 
-// generate random background color
-function randomColor() {
-    function getRandomIntInclusive(min, max) {
-        min = Math.ceil(0);
-        max = Math.floor(255);
-        return Math.floor(Math.random() * (max - min + 1) + min); // Максимум и минимум включаются
-    }
+window.onload = function() {
+    inputElement.value = '';
+};
 
-    let firstNumber = Number(getRandomIntInclusive());
-    let secondNumber = Number(getRandomIntInclusive());
-    let thirdNumber = Number(getRandomIntInclusive());
-    return `rgb(${firstNumber},${secondNumber},${thirdNumber})`;
-}
+// // generate random background color
+// function randomColor() {
+//     function getRandomIntInclusive(min, max) {
+//         min = Math.ceil(0);
+//         max = Math.floor(255);
+//         return Math.floor(Math.random() * (max - min + 1) + min); // Максимум и минимум включаются
+//     }
 
-function paintBlock() {
-    const columns = document.querySelectorAll(".column");
-    const randomColorBtn = document.querySelector(".random-color-btn"); // предположим, что у вас есть кнопка с id="randomColorBtn"
-    let isDrawing = false;
-    let randomBtnClick = false;
+//     let firstNumber = Number(getRandomIntInclusive());
+//     let secondNumber = Number(getRandomIntInclusive());
+//     let thirdNumber = Number(getRandomIntInclusive());
+//     return `rgb(${firstNumber},${secondNumber},${thirdNumber})`;
+// }
 
-    // проверка нажата ли левая клавиша мыши
-    document.addEventListener('mousedown', function(event) {
-        if (event.button == 0) { 
-            isDrawing = true;
-        }
-    });
+// function paintBlock() {
+//     const columns = document.querySelectorAll(".column");
+//     const randomColorBtn = document.querySelector(".random-color-btn"); // предположим, что у вас есть кнопка с id="randomColorBtn"
+//     let isDrawing = false;
+//     let randomBtnClick = false;
 
-    document.addEventListener('mouseup', function(event) {
-        if (event.button == 0) { 
-            isDrawing = false;
-        }
-    });
+//     // проверка нажата ли левая клавиша мыши
+//     document.addEventListener('mousedown', function(event) {
+//         if (event.button == 0) { 
+//             isDrawing = true;
+//         }
+//     });
 
-    // Проверка нажата ли кнопка random color
-    randomColorBtn.addEventListener("click", function(event){
-        randomBtnClick = !randomBtnClick;
-    })
+//     document.addEventListener('mouseup', function(event) {
+//         if (event.button == 0) { 
+//             isDrawing = false;
+//         }
+//     });
+
+//     // Проверка нажата ли кнопка random color
+//     randomColorBtn.addEventListener("click", function(event){
+//         randomBtnClick = !randomBtnClick;
+//     })
     
-    columns.forEach(element => {
-        element.addEventListener("mousemove", function () {
-            if (isDrawing) {
-                if(randomBtnClick){
-                    element.style.background = randomColor();
-                } else {
-                    element.style.background = "black";
-                }
-            }
-        })
-    });
+//     columns.forEach(element => {
+//         element.addEventListener("mousemove", function () {
+//             if (isDrawing) {
+//                 if(randomBtnClick){
+//                     element.style.background = randomColor();
+//                 } else {
+//                     element.style.background = "black";
+//                 }
+//             }
+//         })
+//     });
 
-    columns.forEach(element => {
-        eraseBtn.addEventListener("click", function(){
-            element.style.background = "rgb(255,255,255)";
-        })
-    })
-}
+//     columns.forEach(element => {
+//         eraseBtn.addEventListener("click", function(){
+//             element.style.background = "rgb(255,255,255)";
+//         })
+//     })
+// }
 
-paintBlock()
+// paintBlock()
 
 
 

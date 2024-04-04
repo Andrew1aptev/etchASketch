@@ -86,7 +86,7 @@ function paintBlock() {
     })
 }
 
-paintBlock();
+paintBlock()
 
 
 

@@ -1,5 +1,34 @@
 const field = document.querySelector(".field__wrapper");
 const eraseBtn = document.querySelector(".erase-btn");
+const inputElement = document.querySelector(".field__input");
+
+function createBlocks(number) {
+    number = number || 2;
+    // перед созданием новых блоков очистите поле
+    field.innerHTML = '';
+
+    for (let index = 0; index < number; index++) {
+        const row = document.createElement("div");
+        row.classList.add("row")
+        field.appendChild(row);
+
+        for (let index = 0; index < number; index++) {
+            const column = document.createElement("div");
+            column.classList.add("column");
+            row.appendChild(column);
+        }
+        
+    }
+    paintBlock();
+}
+
+// добавьте обработчик событий для поля ввода
+inputElement.addEventListener('input', function() {
+    const inputValue = inputElement.value;
+    const numberValue = parseInt(inputValue);
+    createBlocks(numberValue);
+});
+
 // generate random background color
 function randomColor() {
     function getRandomIntInclusive(min, max) {
@@ -13,23 +42,6 @@ function randomColor() {
     let thirdNumber = Number(getRandomIntInclusive());
     return `rgb(${firstNumber},${secondNumber},${thirdNumber})`;
 }
-
-function createBlocks(number) {
-    for (let index = 0; index < number; index++) {
-        const row = document.createElement("div");
-        row.classList.add("row")
-        field.appendChild(row);
-
-        for (let index = 0; index < number; index++) {
-            const column = document.createElement("div");
-            column.classList.add("column");
-            row.appendChild(column);
-
-        }
-    }
-}
-createBlocks(100);
-
 
 function paintBlock() {
     const columns = document.querySelectorAll(".column");

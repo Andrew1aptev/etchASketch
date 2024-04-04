@@ -28,7 +28,7 @@ function createBlocks(number) {
         }
     }
 }
-createBlocks(16);
+createBlocks(100);
 
 
 function paintBlock() {

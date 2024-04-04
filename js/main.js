@@ -8,6 +8,7 @@ function drawing(){
     const columns = document.querySelectorAll(".column");
     columns.forEach(element => {
         element.addEventListener("mousemove", function(event){
+            // если нажата левая кнопка мыши, то меняем цвет фона на черный
             if(event.buttons === 1){
                 element.style.background = "black";
             }

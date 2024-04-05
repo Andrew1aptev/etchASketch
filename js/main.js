@@ -75,7 +75,7 @@ inputElement.addEventListener('change', function() {
     createBlocks(numberValue);
 });
 // вызываем функцию для того чтобы изначально было 16х16
-createBlocks(16);
+createBlocks(64);
 
 window.onload = function() {
     inputElement.value = '';

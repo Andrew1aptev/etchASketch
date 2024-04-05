@@ -3,6 +3,7 @@ const eraseBtn = document.querySelector(".erase-btn");
 const inputElement = document.querySelector(".field__input");
 const randomColorBtn = document.querySelector(".random-color-btn")
 const borderBtn = document.querySelector(".border-btn")
+const colorPicker = document.querySelector(".color-picker");
 
 function randomColor(){
     return `rgb(${Math.floor(Math.random()*256)},${Math.floor(Math.random()*256)},${Math.floor(Math.random()*256)})`
@@ -18,7 +19,7 @@ function drawing(){
             // если нажата левая кнопка мыши, то меняем цвет фона на черный
             if(event.buttons === 1){
                 
-                    element.style.background = randomColorBtnCheck ? randomColor() : "black";
+                    element.style.background = randomColorBtnCheck ? randomColor() : colorPicker.value;
             } 
             // отключаем выделение и перетаскивание
             element.style.userSelect = "none";

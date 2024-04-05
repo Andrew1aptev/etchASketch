@@ -74,7 +74,7 @@ inputElement.addEventListener('change', function() {
     // Создаем блоки на основе введенного числа
     createBlocks(numberValue);
 });
-// вызываем функцию для того чтобы изначально было 16х16
+// вызываем функцию для того чтобы изначально было 64х64
 createBlocks(64);
 
 window.onload = function() {

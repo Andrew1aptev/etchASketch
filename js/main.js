@@ -15,7 +15,19 @@ randomColorBtn.addEventListener("click",()=>{
 function drawing(){
     const columns = document.querySelectorAll(".column");
     columns.forEach(element => {
-        element.addEventListener("mouseenter", function(event){
+        element.addEventListener("mousedown", function(event){
+            // если нажата левая кнопка мыши, то меняем цвет фона на выбранный в колор инпуте
+            if(event.buttons === 1){
+                
+                    element.style.background = randomColorBtnCheck ? randomColor() : colorPicker.value;
+            } 
+            // отключаем выделение и перетаскивание
+            element.style.userSelect = "none";
+
+        })
+    });
+    columns.forEach(element => {
+        element.addEventListener("mouseover", function(event){
             // если нажата левая кнопка мыши, то меняем цвет фона на черный
             if(event.buttons === 1){
                 
@@ -26,6 +38,7 @@ function drawing(){
 
         })
     });
+    
     // когда нажимаем на кнопку Erase, то проходимся по всем элементам
     // в columns и меняем каждый на белый цвет
     eraseBtn.addEventListener("click", () => {

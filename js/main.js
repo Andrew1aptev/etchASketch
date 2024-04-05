@@ -38,7 +38,13 @@ function drawing(){
 
         })
     });
-    
+    randomColorBtn.addEventListener("click",() => {
+        if(randomColorBtnCheck){
+            randomColorBtn.innerHTML = "Rainbow mode ON"
+        } else{
+            randomColorBtn.innerHTML = "Rainbow mode OFF"
+        }
+    })
     // когда нажимаем на кнопку Erase, то проходимся по всем элементам
     // в columns и меняем каждый на белый цвет
     eraseBtn.addEventListener("click", () => {
@@ -56,6 +62,14 @@ function drawing(){
             element.style.border = borderBtnCheck ? "none" : "1px solid rgb(158, 158, 158)"
         })
     })
+    borderBtn.addEventListener("click",() => {
+        if(borderBtnCheck){
+            borderBtn.innerHTML = "Borders OFF"
+        } else{
+            borderBtn.innerHTML = "Borders ON"
+        }
+    })
+
 }
 
 // Функция для создания блоков

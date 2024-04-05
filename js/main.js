@@ -2,7 +2,7 @@ const field = document.querySelector(".field__wrapper");
 const eraseBtn = document.querySelector(".erase-btn");
 const inputElement = document.querySelector(".field__input");
 const randomColorBtn = document.querySelector(".random-color-btn")
-
+const borderBtn = document.querySelector(".border-btn")
 
 function randomColor(){
     return `rgb(${Math.floor(Math.random()*256)},${Math.floor(Math.random()*256)},${Math.floor(Math.random()*256)})`
@@ -27,9 +27,19 @@ function drawing(){
     });
     // когда нажимаем на кнопку Erase, то проходимся по всем элементам
     // в columns и меняем каждый на белый цвет
-    eraseBtn.addEventListener("click", ()=>{
+    eraseBtn.addEventListener("click", () => {
         columns.forEach(element => {
             element.style.background = "rgb(255,255,255)"
+        })
+    })
+    // добавляем проверку на нажатие кнопки borderbtn
+    let borderBtnCheck = false;
+    borderBtn.addEventListener("click", () => {
+        borderBtnCheck = !borderBtnCheck;
+    })
+    borderBtn.addEventListener("click", () => {
+        columns.forEach(element => {
+            element.style.border = borderBtnCheck ? "none" : "1px solid rgb(158, 158, 158)"
         })
     })
 }
